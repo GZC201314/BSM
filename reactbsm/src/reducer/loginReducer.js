@@ -1,19 +1,27 @@
+import axios from "axios";
 const defaultState = {
     username:"",
     password:"",
-    validateCode:""
+    validateCode:"",
+    validateCodePic:""
 }
 export default (state = defaultState,action) =>{
     let newState = JSON.parse(JSON.stringify(state));
     switch (action.type) {
-        case "add_num":
-            // newState.num += 1;
+        case "user_login_action":
+            console.log(action.data);
+            axios.post('/userAction!login.action',action.data).then(res => {
+                localStorage.setItem('userData', JSON.stringify(res.data.obj));
+            });
             break;
-        case "input_value_change_handle":
-            // newState.iptVal = action.value;
+        case "create_validateCode_action":
+            // newState.validateCodePic ;
+                axios.get('/userAction!check.action',action.data).then(res => {
+                    debugger;
+                    newState.validateCodePic = res.data.data;
+                });
             break;
         case "input_value_submit_handle":
-            // newState.list.push(newState.iptVal)
             break;
         default:
             break;

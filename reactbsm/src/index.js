@@ -6,6 +6,7 @@ import {Provider} from 'react-redux';
 import LoginComponent from "./component/loginComponent";
 import reportWebVitals from './reportWebVitals';
 import {store} from "./store/store";
+import './mock/mockIndex'
 
 ReactDOM.render(
     <React.StrictMode>

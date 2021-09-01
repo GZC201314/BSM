@@ -1,100 +1,33 @@
-// 使用 Mock
 import Mock from 'mockjs'
+// mock方法,详细的可以看官方文档
+const Random = Mock.Random
 
-
-export default Mock.mock('/menuAction!getTreeNote.action', 'post', {
-    // 属性 list 的值是一个数组，其中含有 1 到 5 个元素
-    'list|1-5': [{
-        "attributes": {"url": "/admin/xxxg.jsp"},
-        "checked": false,
-        "id": "xxxg",
-        "pid": "yhzx",
-        "state": "open",
-        "text": "信息修改"
-    }, {"attributes": {"url": ""}, "checked": false, "id": "0", "state": "closed", "text": "首页"}, {
-        "attributes": {},
-        "checked": false,
-        "id": "tszq",
-        "pid": "0",
-        "state": "closed",
-        "text": "图书专区"
-    }, {
-        "attributes": {},
-        "checked": false,
-        "id": "xtgl",
-        "pid": "0",
-        "state": "closed",
-        "text": "系统管理"
-    }, {
-        "attributes": {"url": "/aizq/tpsb.jsp"},
-        "checked": false,
-        "id": "tpsb",
-        "pid": "aizq",
-        "state": "open",
-        "text": "图片识别"
-    }, {
-        "attributes": {"url": "/admin/yhgl.jsp"},
-        "checked": false,
-        "id": "yhgl",
-        "pid": "xtgl",
-        "state": "open",
-        "text": "用户管理"
-    }, {
-        "attributes": {},
-        "checked": false,
-        "id": "aizq",
-        "pid": "0",
-        "state": "closed",
-        "text": "智能专区"
-    }, {
-        "attributes": {"url": "/admin/buggl.jsp"},
-        "checked": false,
-        "id": "buggl",
-        "pid": "xtgl",
-        "state": "open",
-        "text": "BUG管理"
-    }, {
-        "attributes": {"url": "/admin/jsgl.jsp"},
-        "checked": false,
-        "iconCls": "icon-save",
-        "id": "jsgl",
-        "pid": "xtgl",
-        "state": "open",
-        "text": "角色管理"
-    }, {
-        "attributes": {"url": "/admin/grzx.jsp"},
-        "checked": false,
-        "id": "grzx",
-        "pid": "yhzx",
-        "state": "open",
-        "text": "个人中心"
-    }, {
-        "attributes": {"url": "/admin/qxgl.jsp"},
-        "checked": false,
-        "id": "qxgl",
-        "pid": "xtgl",
-        "state": "open",
-        "text": "权限管理"
-    }, {
-        "attributes": {},
-        "checked": false,
-        "id": "yhzx",
-        "pid": "0",
-        "state": "closed",
-        "text": "用户中心"
-    }, {
-        "attributes": {"url": "/tszq/tsgl.jsp"},
-        "checked": false,
-        "id": "tsgl",
-        "pid": "tszq",
-        "state": "open",
-        "text": "图书管理"
-    }, {
-        "attributes": {"url": "/admin/cdgl.jsp"},
-        "checked": false,
-        "id": "cdgl",
-        "pid": "xtgl",
-        "state": "open",
-        "text": "菜单管理"
-    }]
-})
+export default [
+    {
+        url: '/userAction!login.action',
+        type: 'post',
+        response: config => {
+            return {
+            msg:"登录成功.",
+                obj:{
+                    isFaceValid:0,
+                    refreshToken:"692f8d54-78f6-49d1-94cf-53edc5dfb163",
+                    role:0,
+                    token:"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJpc3N1ZXJqd3QiLCJleHAiOjE2MzA0ODYzNTYsImlhdCI6MTYzMDQ4NjA1NiwidXNlcm5hbWUiOiJhZG1pbiJ9.5fExCHUzgqm_BcLe9reXJkM3omrWTmPRz2psHumV1ok",
+                    userName:"admin",
+                    userlog:"http://114.116.252.220:8080/BookStoreManager/upload/5f140e8a-0d64-4b3e-a0b4-59de3dd29f46.png"
+                },
+                success:true
+            }
+        }
+    },
+    {
+        url: '/userAction!check.action',
+        type: 'get',
+        response: () => {
+            return {
+                data: Random.image('200x100', '#50B347', Random.title(1))
+            }
+        }
+    }
+]
